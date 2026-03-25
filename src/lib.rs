@@ -77,6 +77,15 @@ impl Timing for Sk68xxTiming {
     const TIME_1_LOW: u16 = SK68XX_CODE_PERIOD - Self::TIME_1_HIGH;
 }
 
+/// Timing for the WS2815 LEDs.
+pub enum Ws2815Timing {}
+impl Timing for Ws2815Timing {
+    const TIME_0_HIGH: u16 = 300;
+    const TIME_0_LOW: u16 = 1090;
+    const TIME_1_HIGH: u16 = 1090;
+    const TIME_1_LOW: u16 = 320;
+}
+
 /// Timing for the WS2812B LEDs.
 pub enum Ws2812bTiming {}
 impl Timing for Ws2812bTiming {
