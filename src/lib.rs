@@ -220,7 +220,7 @@ pub const fn buffer_size<C: Color>(led_count: usize) -> usize {
 /// Common [`ColorOrder`] implementations.
 pub mod color_order {
     use num_traits::Unsigned;
-    use smart_leds_trait::{RGB, RGBW, White};
+    use smart_leds_trait::{RGB, RGBW, White, RGBCCT};
 
     use crate::Color;
 
@@ -278,6 +278,24 @@ pub mod color_order {
                 1 => color.g,
                 2 => color.b,
                 3 => color.a.0,
+                _ => unreachable!(),
+            }
+        }
+    }
+
+    /// [`ColorOrder`] RGBCCT.
+    pub enum Rgbcct {}
+    impl<T> ColorOrder<RGBCCT<T>> for Rgbcct
+    where
+        T: Copy + Unsigned + Into<usize>,
+    {
+        fn get_channel_data(color: &RGBCCT<T>, channel: u8) -> T {
+            match channel {
+                0 => color.r,
+                1 => color.g,
+                2 => color.b,
+                3 => color.a.cold,
+                4 => color.a.warm,
                 _ => unreachable!(),
             }
         }
