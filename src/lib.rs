@@ -179,7 +179,7 @@ impl<T> Color for RGBCCT<T>
 where
     T: Unsigned + Into<usize>,
 {
-    const CHANNELS: u8 = 5;
+    const CHANNELS: u8 = 6;
     type ChannelType = T;
 }
 
@@ -296,6 +296,7 @@ pub mod color_order {
                 2 => color.b,
                 3 => color.a.cold,
                 4 => color.a.warm,
+                5 => T::zero(),
                 _ => unreachable!(),
             }
         }
