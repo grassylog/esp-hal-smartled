@@ -116,10 +116,10 @@ impl Timing for Ws2811LowSpeedTiming {
 /// Timing for the WS2811 driver ICs, high-speed mode.
 pub enum Ws2811Timing {}
 impl Timing for Ws2811Timing {
-    const TIME_0_HIGH: u16 = Ws2811LowSpeedTiming::TIME_0_HIGH / 2;
-    const TIME_0_LOW: u16 = Ws2811LowSpeedTiming::TIME_0_LOW / 2;
-    const TIME_1_HIGH: u16 = Ws2811LowSpeedTiming::TIME_1_HIGH / 2;
-    const TIME_1_LOW: u16 = Ws2811LowSpeedTiming::TIME_1_LOW / 2;
+    const TIME_0_HIGH: u16 = 300;
+    const TIME_0_LOW: u16 = 790;
+    const TIME_1_HIGH: u16 = 790;
+    const TIME_1_LOW: u16 = 790;
 }
 
 /// All types of errors that can happen during the conversion and transmission
